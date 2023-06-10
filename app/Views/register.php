@@ -15,11 +15,11 @@
   </div>
     <div class="container p-5">
     <h1>Signup Form</h1>
-    <?php if(session()->getFlashdata('errors')) ;?>
+    <?php if(session()->getFlashdata('errors')) {;?>
     <div style='color: red;'>
     <?php foreach (session()->getFlashdata('errors') as $error): ?>
         <?= $error ?><br>
-    <?php endforeach;?>
+    <?php endforeach;}?>
     </div>
         <div class="form-group">
             <label for="nama" class="form-label">Nama Lenkap</label>
