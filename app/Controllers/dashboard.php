@@ -1,24 +1,14 @@
 <?php
 namespace App\Controllers;
 
-use CodeIgniter\HTTP\RequestInterface;
-use Psr\Log\LoggerInterface;
-
 class dashboard extends BaseController
 {
     protected $beforeFilters = ['dashboardfilter'];
 
     public function index()
     {
-        // create if else statement to check if user is logged in
-        // if logged in, show dashboard
-        // else, redirect to login page
-        // if (!session()->get('logged_in')) {
-        // return redirect()->to(base_url('/login'))->with('errors', 'Anda harus login terlebih dahulu');
-        // } else {
         $data['title'] = 'Dashboard';
         return view('dashboard/index', $data);
-        // }
     }
     public function dashboard()
     {
