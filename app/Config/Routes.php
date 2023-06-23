@@ -45,6 +45,8 @@ $routes->post('/login/authenticate', 'Login::authenticate');
 $routes->get('/register', 'register::index');
 $routes->post('/register', 'register::store');
 
+$routes->post('/anggotainput', 'dashboard::inputAnggota');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
