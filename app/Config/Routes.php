@@ -46,6 +46,11 @@ $routes->get('/register', 'register::index');
 $routes->post('/register', 'register::store');
 
 $routes->post('/anggotainput', 'dashboard::inputAnggota');
+$routes->get('/updateAnggotaTabel', 'dashboard::updateAnggotaTabel');
+$routes->post('/bukuinput', 'dashboard::inputBuku');
+$routes->get('/updateBukuTabel', 'dashboard::updateBukuTabel');
+$routes->post('/kategoriinput', 'dashboard::inputKategori');
+$routes->get('/updateKategoriTabel', 'dashboard::updateKategoriTabel');
 
 /*
  * --------------------------------------------------------------------

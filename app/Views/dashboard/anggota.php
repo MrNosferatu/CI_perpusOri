@@ -27,26 +27,23 @@
     }
 </style>
 <div class="content">
+<h2>Input Anggota</h2>
+
 <!-- HTML form -->
 <form id="myForm" method="post">
     <label for="name">Name:</label>
     <input type="text" id="nama" name="nama"><br><br>
     <label for="email">Email:</label>
     <input type="email" id="email" name="email"><br><br>
-    <input type="submit" value="Submit">
+    <label for="alamat">Alamat:</label>
+    <input type="text" id="alamat" name="alamat"><br><br>
+    <label for="telepon">No Telepon:</label>
+    <input type="text" id="telepon" name="telepon"><br><br>
+    <button id="update-button" type="submit" value="Submit">Add</button>
   </form>
-  <table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-  </tr>
-  <?php foreach ($anggota as $row) : ?>
-    <tr>
-      <td><?= $row['nama'] ?></td>
-      <td><?= $row['email'] ?></td>
-    </tr>
-  <?php endforeach ?>
-</table>
+  <h2>Daftar Anggota</h2>
+
+
 </div>
 
   <!-- jQuery AJAX -->
@@ -66,7 +63,23 @@ $(document).ready(function() {
       success: function(response) {
         alert('Data inserted successfully!'); // show pop-up message
         $('#myForm')[0].reset(); // clear form
-
+  // Send an AJAX request to the controller
+  const xhr = new XMLHttpRequest();
+  xhr.open('get', '/updateAnggotaTabel');
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      // Update the table content
+      const table = document.getElementById('tabel-anggota');
+      table.innerHTML = xhr.responseText;
+    } else {
+      console.error('Error:', xhr.statusText);
+    }
+  };
+  xhr.onerror = function() {
+    console.error('Error:', xhr.statusText);
+  };
+  xhr.send();
       },
       error: function(xhr, status, error) {
         alert('Data not inserted'); // show pop-up message
@@ -74,4 +87,6 @@ $(document).ready(function() {
     });
   });
 });
+
+
     </script>
